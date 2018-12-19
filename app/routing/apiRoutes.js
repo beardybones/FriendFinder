@@ -13,11 +13,17 @@ module.exports = function(app) {
         //loop through friends array for match
         for (var i =0; i < friendsData.length; i++) {
             var difference = 0;
+            var bestDifference = 100;
+            var match = 0;
             for (var x =0; x < data.scores.length; x++) {
                 difference = difference + Math.abs((friendsData[i].scores[x]) - data.scores[x]);
             }
-            console.log(difference);
-            
+            console.log("Difference: " + difference);
+            if (difference < bestDifference) {
+                bestDifference = difference;
+                match = i;
+                console.log("Best difference: " + bestDifference);
+            }
         }
 
 
@@ -31,7 +37,7 @@ module.exports = function(app) {
         // }
 
         friendsData.push(data);
-        res.json(true);
+        res.json(friendsData[match]);
         
     });
 
