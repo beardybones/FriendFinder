@@ -8,7 +8,7 @@ module.exports = function(app) {
 
     app.post("/api/friends", function(req, res) {
         friendsData.push(req.body);
-        console.log(res);
+        console.log(res.req.body);
         // friendsArray.push(res);
         //loop through friends array for match
         res.json(true);
